@@ -1,29 +1,36 @@
 import { createStore } from 'redux'
-import { ADD_ELEMENT } from './actionTypes'
+import {
+  OPEN_EVENT_DIALOG,
+  CLOSE_EVENT_DIALOG
+} from './actionTypes'
 import { TODO_HERE } from './../constants'
 import { createUUID } from './../utilFunctions'
+import { Map } from 'immutable'
 
-const initialState = {
-
-}
-
-function deepCopy (oldObject) {
-  return JSON.parse(JSON.stringify(oldObject))
-}
-
+const initialState = Map({
+  eventDialogOpen: false,
+  selectedEvent: null,
+  events: null
+})
 
 function reducer (state = initialState, action) {
-  let newState = deepCopy(state)
+  console.log('ran reducer')
 
   switch (action.type) {
-    case ADD_ELEMENT: {
+    case OPEN_EVENT_DIALOG: {
+      return state.update('eventDialogOpen', () => true)
+                  .update('selectedEvent', () => action.payload.id)
+      break
+    }
+    case CLOSE_EVENT_DIALOG: {
+      return state.update('eventDialogOpen', () => false)
+                  .update('selectedEvent', () => null)
       break
     }
     default: {
-
+      return state
     }
   }
-  return newState
 }
 
 export default createStore(reducer)

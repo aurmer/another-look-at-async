@@ -1,1 +1,2 @@
-export const ADD_ELEMENT = 'ADD_ELEMENT'
+export const OPEN_EVENT_DIA = 'OPEN_EVENT_DIA'
+export const CLOSE_EVENT_DIA = 'CLOSE_EVENT_DIA'
