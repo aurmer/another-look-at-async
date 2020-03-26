@@ -1,5 +1,4 @@
 import React from 'react'
-import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { connect } from 'react-redux'
 import {
@@ -10,14 +9,18 @@ import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 
 function gridDivs(props) {
-  return [...Array(24)].map((element,idx)=>(
-    <div key={idx} onClick={props.openEventDialog.bind(null,idx)}></div>
-  ))
+  return props.eventsArray.map((evt,idx)=> {
+    console.log(evt)
+    const onClickCallback = (evt.get('clickable')) ? props.openEventDialog.bind(null,idx) : null
+    const styles = (evt.get('clickable')) ? {backgroundColor:"#DDD"} : {backgroundColor:"grey"}
+    return (
+      <div key={idx} onClick={onClickCallback} style={styles}></div>
+    )
+  })
 }
 
 function App(props) {
   console.log(props)
-
   return (
     <>
       <div className="event-grid">
@@ -56,7 +59,8 @@ function App(props) {
 function mapStateToProps(state) {
   return {
     showModal: state.get('eventDialogOpen'),
-    selectedEvent: state.get('selectedEvent')
+    selectedEvent: state.get('selectedEvent'),
+    eventsArray: state.get('events')
   }
 }
 
