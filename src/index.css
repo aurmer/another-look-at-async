@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: normal;
 }
 
 code {
@@ -16,12 +17,21 @@ code {
   margin: 10px;
   display: grid;
   grid-template: auto / 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-gap: 10px;
-  height: 450px;
-  width: calc(100% - 20px);
-  min-width: 700px;
+  grid-gap: 3px;
+  height: 250px;
+  width: 700px;
+  user-select: none;
+  font-weight: 700;
 }
 
-.event-grid div {
-  background-color:black;
+.event-grid>div {
+  position: relative;
+  border: solid 2px;
+  background-color: #AAA;
+}
+
+.event-grid .coord-box {
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }

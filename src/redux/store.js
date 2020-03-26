@@ -3,7 +3,6 @@ import {
   OPEN_EVENT_DIALOG,
   CLOSE_EVENT_DIALOG
 } from './actionTypes'
-import { TODO_HERE } from './../constants'
 import { createUUID } from './../utilFunctions'
 import { Map } from 'immutable'
 
@@ -16,7 +15,7 @@ const initialState = Map({
 function buildInitialEvent(idx) {
   const eventDetails = Map({
     clickable: false,
-    trigger: null,
+    type: null,
     data: null,
     time: null,
     willSucceed: true

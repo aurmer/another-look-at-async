@@ -1,5 +1,4 @@
 import React from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import { connect } from 'react-redux'
 import {
   openEventDialog,
@@ -7,20 +6,37 @@ import {
 } from './redux/actions'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
+import { SELECTED_EVENT_COLOR } from './constants'
+
+function gridIdxToCoord(idx) {
+  return {
+    y: Math.floor(idx/6),
+    x: idx%6
+  }
+}
 
 function gridDivs(props) {
   return props.eventsArray.map((evt,idx)=> {
-    console.log(evt)
+    const {y, x} = gridIdxToCoord(idx)
     const onClickCallback = (evt.get('clickable')) ? props.openEventDialog.bind(null,idx) : null
-    const styles = (evt.get('clickable')) ? {backgroundColor:"#DDD"} : {backgroundColor:"grey"}
+    const styles = (evt.get('clickable')) ? {backgroundColor:SELECTED_EVENT_COLOR} : {}
+
+    /*add a tooltip which points to the left and right of each event and explains what is happening with vocab*/
     return (
-      <div key={idx} onClick={onClickCallback} style={styles}></div>
+
+      <div key={idx} onClick={onClickCallback} style={styles}>
+        {evt.get('type')}
+        <div className="coord-box">
+          [{y},{x}]
+        </div>
+      </div>
     )
   })
 }
 
 function App(props) {
-  console.log(props)
+  const {y, x} = gridIdxToCoord(props.selectedEvent)
+
   return (
     <>
       <div className="event-grid">
@@ -36,19 +52,24 @@ function App(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Modal heading
+            Create/Edit Event [{y}][{x}]
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Event #{props.selectedEvent}</h4>
-          <p>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-            consectetur ac, vestibulum at eros.
-          </p>
+          <select id="eventTypeSelect">
+            <option value=""></option>
+            <option value="clock">clock</option>
+            <option value="ajax">ajax</option>
+            <option value="ajax"></option>
+          </select>
+          <select id="eventSucceedSelect">
+            <option value=""></option>
+            <option value="true">true</option>
+            <option value="false">false</option>
+          </select>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={props.onHideModal}>Close</Button>
+          <Button onClick={props.onHideModal}>Save</Button>
         </Modal.Footer>
       </Modal>
     </>

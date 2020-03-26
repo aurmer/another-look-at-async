@@ -1,2 +1,2 @@
 
-export const TODO_HERE = 13
+export const SELECTED_EVENT_COLOR = "#99D"
