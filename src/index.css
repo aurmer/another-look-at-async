@@ -135,3 +135,7 @@ input.event-input {
   overflow-y: auto;
   text-align: left;
 }
+
+.control {
+  margin: 0 5px;
+}

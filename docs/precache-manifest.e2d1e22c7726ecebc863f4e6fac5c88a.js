@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f8dcca16d011753b71f345cebd514b23",
+    "revision": "989fdd480e4e6288e7ef0c6b372953c7",
     "url": "/learn-async/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/learn-async/static/css/2.de424728.chunk.css"
   },
   {
-    "revision": "fdb3fdd41f87edfe1369",
-    "url": "/learn-async/static/css/main.6f58effc.chunk.css"
+    "revision": "e3bb4abfb7c29bf84dd3",
+    "url": "/learn-async/static/css/main.b0aa0fc3.chunk.css"
   },
   {
     "revision": "38587074736098d6e71d",
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/learn-async/static/js/2.ee135fd3.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "fdb3fdd41f87edfe1369",
-    "url": "/learn-async/static/js/main.9b447acc.chunk.js"
+    "revision": "e3bb4abfb7c29bf84dd3",
+    "url": "/learn-async/static/js/main.5a5dbe2e.chunk.js"
   },
   {
     "revision": "18898a038e5ef6f0ad6f",

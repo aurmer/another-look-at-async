@@ -6,7 +6,8 @@ import {
   saveEvent,
   updateEventStatus,
   initSequence,
-  resetStatus
+  resetRun,
+  clearAll
 } from './redux/actions'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
@@ -93,8 +94,9 @@ function App(props) {
       <div className="event-grid">
         {gridDivs(props)}
       </div>
-      <button className="start" onClick={props.initSequence}>Start</button>
-      <button className="reset" onClick={props.resetStatus}>Reset</button>
+      <button className="start control" onClick={props.initSequence}>Start</button>
+      <button className="reset control" onClick={props.resetRun}>Reset Run</button>
+      <button className="clear control" onClick={props.clearAll}>Clear All</button>
       <p className="faux-console-desc">Here is the console which will log the events start and stop times.</p>
       <div className="faux-console">{logs}</div>
       <Modal
@@ -159,6 +161,7 @@ export default connect(
     saveEvent,
     updateEventStatus,
     initSequence,
-    resetStatus
+    resetRun,
+    clearAll
   }
 )(App)

@@ -5,7 +5,8 @@ import {
   SAVE_EVENT,
   UPDATE_EVENT,
   INIT_SEQUENCE,
-  RESET_STATUS
+  RESET_STATUS,
+  CLEAR_ALL
 } from './actionTypes'
 import { Map, List } from 'immutable'
 import { UNSTARTED, STARTED, COMPLETED } from '../constants'
@@ -145,6 +146,9 @@ function reducer (state = initialState, action) {
                                               event.update('status',()=>UNSTARTED)))
                   .update('logText',()=>"")
                   .update('startTimestamp',()=>null)
+    }
+    case CLEAR_ALL: {
+      return initialState
     }
     default: {
       return state
