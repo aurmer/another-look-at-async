@@ -75,26 +75,24 @@ code {
 .event-progress-overlay {
 }
 
-.progress-bar {
+.progress {
   position: absolute;
   left: 0;
   top: 0;
   height: 100%;
   width: 0;
   width: 0;
-  transition: width 5s linear;
 }
 
-.progress-bar.enter {
+.progress.enter {
   width: 0;
 }
 
-.progress-bar.enter-active {
+.progress.enter-active {
   width: 100%;
-  transition: width 5s linear;
 }
 
-.progress-bar.enter-done {
+.progress.enter-done {
   width: 100%;
 }
 
@@ -107,11 +105,11 @@ code {
 
 }
 
-.progress-bar.pass {
+.progress.pass {
   background-color: #9D9;
 }
 
-.progress-bar.fail {
+.progress.fail {
   background-color: #D99;
 }
 

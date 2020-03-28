@@ -4,7 +4,8 @@ import {
   CLOSE_EVENT_DIALOG,
   SAVE_EVENT,
   UPDATE_EVENT,
-  INIT_SEQUENCE
+  INIT_SEQUENCE,
+  RESET_STATUS
 } from './actionTypes'
 import { Map, List } from 'immutable'
 import { UNSTARTED, STARTED, COMPLETED } from '../constants'
@@ -137,10 +138,14 @@ function reducer (state = initialState, action) {
 
       return newState.update('logText',
                       (text)=>newState.get('events').map((event,idx)=> {
-                                                        console.log(event.get('status'))
-                                                        console.log(STARTED)
-                                                        console.log(event.get('status') === STARTED)
                                                         return (event.get('status') === STARTED) ? text+printLog(idx,STARTED,newState.get('startTimestamp')) : text}).join(''))}
+    case RESET_STATUS: {
+      return state.update('events',(events)=>
+                                    events.map((event)=>
+                                              event.update('status',()=>UNSTARTED)))
+                  .update('logText',()=>"")
+                  .update('startTimestamp',()=>null)
+    }
     default: {
       return state
     }

@@ -5,7 +5,8 @@ import {
   onHideModal,
   saveEvent,
   updateEventStatus,
-  initSequence
+  initSequence,
+  resetStatus
 } from './redux/actions'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
@@ -29,8 +30,8 @@ function gridDivs(props) {
     const eventInfo = (evt.get('type') !== null) ? `${evt.get('type')},${(evt.get('willSucceed')) ? "t" : "f"},${evt.get('time')}s` : null
     const addEventSign = (evt.get('type') === null && evt.get('isClickable')) ? "+" : null
     const hasBeenStarted = (evt.get('status') === STARTED || evt.get('status') === COMPLETED)
-    const transitionStyle = {transition: `width ${evt.get('time')}s linear`}
-    const progressClassNames = (evt.get('willSucceed')) ? "progress-bar pass" : "progress-bar fail"
+    const transitionStyle = (hasBeenStarted) ? {transition: `width ${evt.get('time')}s linear`} : {}
+    const progressClassNames = (evt.get('willSucceed')) ? "progress pass" : "progress fail"
 
     /*add a tooltip which points to the left and right of each event and explains what is happening with vocab
       and there is a color wipe on the div left to right like a progress bar*/
@@ -80,17 +81,21 @@ function App(props) {
       <h2>(eventually game?)</h2>
       <p key={1}>
         This version doesn't have everything implemented, but it gives you a
-        sense of the direction I am headed in. Stick with making 'ajax' events
-        that will either pass or fail and will take X seconds to complete.
+        sense of the direction I am headed in. For this demo, only make 'ajax'
+        events. Make some Succeed:true and some false and will take X seconds to complete.
       </p>
       <p key={2}>
-        X axis is memory. Y axis is time. Let me know what you think!
+        Click a + sign in a box to start, when you stack events vertically, they
+        run one after another, when you line them up horizontally, they all run
+        at the same time. Let me know what you think! "I see what this can do,
+        and I could see using it as a teaching tool if it had _______."
       </p>
       <div className="event-grid">
         {gridDivs(props)}
       </div>
       <button className="start" onClick={props.initSequence}>Start</button>
-      <p className="faux-console-desc">Here is the console which will log the events</p>
+      <button className="reset" onClick={props.resetStatus}>Reset</button>
+      <p className="faux-console-desc">Here is the console which will log the events start and stop times.</p>
       <div className="faux-console">{logs}</div>
       <Modal
         show={props.showModal}
@@ -153,6 +158,7 @@ export default connect(
     onHideModal,
     saveEvent,
     updateEventStatus,
-    initSequence
+    initSequence,
+    resetStatus
   }
 )(App)

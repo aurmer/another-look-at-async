@@ -3,7 +3,8 @@ import {
   CLOSE_EVENT_DIALOG,
   SAVE_EVENT,
   UPDATE_EVENT,
-  INIT_SEQUENCE
+  INIT_SEQUENCE,
+  RESET_STATUS
 } from './actionTypes'
 
 export const openEventDialog = (evtId) => ({
@@ -34,4 +35,8 @@ export const updateEventStatus = (status,id) => ({
 
 export const initSequence = () => ({
   type: INIT_SEQUENCE
+})
+
+export const resetStatus = () => ({
+  type: RESET_STATUS
 })
