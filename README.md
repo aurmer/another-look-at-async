@@ -1,5 +1,5 @@
 # Learn Async
 
-This app will allow you to create your own async behavior scenarios. It will
-also use verbiage that we will need to understand and effectively communicate
-about asynchronous events.
+I have lofty goals for this app. I built it using React, Redux, and a bit of Immutable.JS.
+This app will allow you to create your own async scenarios and get a feel for the
+nature of asynchronous operations.
