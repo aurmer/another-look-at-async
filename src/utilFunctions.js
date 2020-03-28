@@ -7,3 +7,10 @@ export const createUUID = () => {
     return v.toString(16)
   })
 }
+
+export const gridIdxToCoord = (idx) => {
+  return {
+    y: Math.floor(idx/6),
+    x: idx%6
+  }
+}

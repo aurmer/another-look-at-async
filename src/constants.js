@@ -1,2 +1,3 @@
-
-export const SELECTED_EVENT_COLOR = "#99D"
+export const STARTED = 'STARTED'
+export const COMPLETED = 'COMPLETED'
+export const UNSTARTED = 'UNSTARTED'

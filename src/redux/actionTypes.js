@@ -1,2 +1,5 @@
 export const OPEN_EVENT_DIALOG = 'OPEN_EVENT_DIA'
 export const CLOSE_EVENT_DIALOG = 'CLOSE_EVENT_DIA'
+export const SAVE_EVENT = 'SAVE_EVENT'
+export const UPDATE_EVENT = 'UPDATE_EVENT'
+export const INIT_SEQUENCE = 'INIT_SEQUENCE'
